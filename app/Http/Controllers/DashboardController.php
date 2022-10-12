@@ -111,6 +111,8 @@ class DashboardController extends Controller
 
     public function change_cardy_rate(Request $request){
 
+
+
         $new_rate = $request->rate;
 
         $update = Charge::where('title', 'rate')
@@ -130,6 +132,46 @@ class DashboardController extends Controller
 
         return back()->with('message', "Creation Fee has been successfully changed to $new_rate USD");
 
+    }
+
+
+    public function virtual_view(){
+
+        $mono_key = env('MONO_KEY');
+
+        $cardy_rate = Charge::where('title', 'rate')
+        ->first()->amount;
+
+
+        $headers = [
+            'Content-Type' => 'application/json',
+            'mono-sec-key' => "$mono_key",
+        ];
+        $client = new GuzzleClient([
+            'headers' => $headers
+        ]);
+        $body = '{
+
+        }';
+        $response = $client->request('GET', 'https://api.withmono.com/issuing/v1/wallets?currency=usd', [
+            'body' => $body
+        ]);
+
+        $body = $response->getBody();
+        $result = json_decode($body);
+
+        $get_balance = $result->data->balance;
+
+        $usd_wallet = $get_balance / 100 ;
+
+        $users = User::where('type', '2')
+        ->count();
+
+
+
+
+
+        return view('virtual',compact('cardy_rate', 'usd_wallet', 'users'));
     }
 
 

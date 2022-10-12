@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Charge;
+use App\Models\IssuingWallet;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Contracts\Providers\Authl;
@@ -16,7 +17,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Client as GuzzleClient;
 use Illuminate\View\ViewName;
 use DB;
-
+use Illuminate\Support\Str;
 
 class TransactionController extends Controller
 {
@@ -25,7 +26,128 @@ class TransactionController extends Controller
 
     public function fund_wallet_view(){
 
-        return view('fund-wallet');
+
+        $total_transactions = IssuingWallet::all()->sum('amount');
+
+        $transactions = IssuingWallet::orderBy('id', 'DESC')
+        ->paginate(10);
+
+
+
+
+        return view('fund-wallet', compact('total_transactions', 'transactions'));
+    }
+
+
+    public function fund_issuing_wallet_now(Request $request){
+
+
+
+        $amount = $request->amount;
+
+        $momo_amount = $amount * 100;
+        $currency = "usd";
+
+        $mono_key = env('MONO_KEY');
+
+
+         //get mono rate
+         $headers = [
+            'Content-Type' => 'application/json',
+            'mono-sec-key' => "$mono_key",
+        ];
+        $client = new GuzzleClient([
+            'headers' => $headers
+        ]);
+        $body = '{
+
+        }';
+        $response = $client->request('GET', 'https://api.withmono.com/issuing/v1/misc/rates/usd', [
+            'body' => $body
+        ]);
+
+        $body = $response->getBody();
+        $result = json_decode($body);
+
+        $rate = $result->data->rate;
+
+
+        $amount_usd = round(($amount / $rate), 2);
+
+
+
+
+
+         //fund on mono rate
+
+        $databody = array(
+            "currency" => "ngn",
+            "amount" => $momo_amount
+        );
+
+        $mono_api_key = env('MONO_KEY');
+        $body = json_encode($databody);
+
+        $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, 'https://api.withmono.com/issuing/v1/wallets/fund');
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_ENCODING, '');
+            curl_setopt($curl, CURLOPT_MAXREDIRS, 10);
+            curl_setopt($curl, CURLOPT_TIMEOUT, 0);
+            curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $body);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt(
+                $curl,
+                CURLOPT_HTTPHEADER,
+                array(
+                    'Content-Type: application/json',
+                    'Accept: application/json',
+                    "mono-sec-key: $mono_api_key",
+                )
+            );
+            // $final_results = curl_exec($curl);
+
+        $var = curl_exec($curl);
+        curl_close($curl);
+
+
+        $var = json_decode($var);
+
+        if($var->status == 'successful'){
+
+        $save = new IssuingWallet();
+        $save->amount = $amount;
+        $save->trx_id = Str::random(6);
+        $save->amount_usd = $amount_usd;
+        $save->message = $var->message;
+        $save->account_number = $var->data->account_number;
+        $save->reference = $var->data->reference;
+        $save->bank_name = $var->data->bank_name;
+        $save->account_name = $var->data->account_name;
+        $save->save();
+
+        return back()->with('message', 'Wallet payment created successfully');
+
+
+
+    }return back()->with('error', 'Sorry!! check the api request');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 

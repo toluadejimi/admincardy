@@ -49,6 +49,13 @@ Route::post('cardy-change-creation-rate', [DashboardController::class, 'change_c
 Route::get('/fund-wallet', [TransactionController::class, 'fund_wallet_view']);
 Route::post('cardy-change-rate', [DashboardController::class, 'change_cardy_rate']);
 Route::post('cardy-change-creation-rate', [DashboardController::class, 'change_cardy_creation_rate']);
+Route::post('fund-issuing-wallet-now', [TransactionController::class, 'fund_issuing_wallet_now']);
+
+
+
+
+//virtual
+Route::get('virtual', [DashboardController::class, 'virtual_view']);
 
 
 });
