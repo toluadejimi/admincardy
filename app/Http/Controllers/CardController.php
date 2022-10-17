@@ -69,6 +69,8 @@ class CardController extends Controller
 
         $usd_card = $result->data;
 
+
+
         //get info
         $headers = [
             'Content-Type' => 'application/json',
@@ -87,9 +89,12 @@ class CardController extends Controller
         $body = $response->getBody();
         $r = json_decode($body);
 
+
         $name_on_card = $r->data->name_on_card;
 
         $balance = $r->data->balance / 100;
+
+
 
         return view('usd-card', compact('usd_card', 'name_on_card', 'balance'));
 

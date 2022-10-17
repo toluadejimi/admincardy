@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\BankTransfer;
 use App\Models\Charge;
 use App\Models\IssuingWallet;
 use App\Providers\RouteServiceProvider;
@@ -136,19 +137,60 @@ class TransactionController extends Controller
     }return back()->with('error', 'Sorry!! check the api request');
 
 
+    }
 
 
 
 
+    public function bank_transfer_view(){
+
+
+        $bank_transfers = BankTransfer::orderBy('id', 'ASC')
+        ->paginate(10);
 
 
 
-
-
-
-
+        return view('bank-transfer',compact('bank_transfers'));
 
     }
+
+
+    public function update_transfer(Request $request){
+
+        $id = $request->query('id');
+
+        $update = BankTransfer::where('id',$id)
+        ->update(['status' => '1']);
+
+        return back()->with('message', 'Transaction Sucessfully Updated');
+
+    }
+
+
+    public function delete_transfer(Request $request){
+
+        $id = $request->query('id');
+
+        $update = BankTransfer::where('id',$id)
+        ->delete();
+
+        return back()->with('message', 'Transaction Sucessfully removed');
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

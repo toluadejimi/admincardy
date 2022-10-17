@@ -73,6 +73,15 @@ Route::get('delete-user', [UserController::class,'delete_user']);
 
 
 
+//bank-transfer
+
+Route::get('bank-transfer', [TransactionController::class,'bank_transfer_view']);
+ Route::get('update-transfer', [TransactionController::class,'update_transfer']);
+ Route::get('delete-transfer', [TransactionController::class,'delete_transfer']);
+
+
+
+
 
 
 
