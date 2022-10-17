@@ -1,171 +1,118 @@
-@extends('layouts.main')
-@section('content')
-<div class="main-content">
-    <div class="card mt-4">
-        @if (session()->has('message'))
-            <div class="alert alert-success">
-                {{ session()->get('message') }}
-            </div>
-        @endif
-        @if (session()->has('error'))
-            <div class="alert alert-danger">
-                {{ session()->get('error') }}
-            </div>
-        @endif
-        <div class="row">
+@extends('layouts.users')
 
-            <div class="card-header">
-                <h4> Create Users</h4>
-            </div>
-            <div class="col-md-12 ">
-                <form action="/createUser" method="post" class="mb-4 p-2">
-                    @csrf
-                    
-                    <div class="row d-flex p-2">
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="">First Name</label>
-                                <input type="text" name="first_name" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="">Last Name</label>
-                                <input type="text" name="last_name" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="">Email</label>
-                                <input type="email" name="email" class="form-control">
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div class="row d-flex p-2">
-                        
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="">Phone</label>
-                                <input type="text" name="phone" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="">Location</label>
-                                <select name="location_id" id="" class="form-control">
-                                    @forelse ($collection as $items)
-                                    <option value="{{$items->id}}">{{$items->name}}({{$items->type}})</option>
-                                    @empty
-                                    <option value="">No Record Found </option>
-                                    @endforelse
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-group">
-                                <label for="">Password</label>
-                                <input type="password" name="password" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div class="row d-flex p-2">
-                        <div class="col">
-                             <div class="form-group">
-                                <label for="">Role</label>
-                                <select name="role_id" id="" class="form-control">
-                                    <option value="">Select Role</option>
-                                    
-                                    @forelse ($roles as $item)
-                                        
-                                    <option value="{{$item->id}}">{{$item->name}}</option>
-                                    @empty
-                                    <option value="">No Record Found</option>
-                                    @endforelse
-                                   
-                                </select>
-                            </div>
-                        </div>
-                        
-                           <div class="col">
-                             <div class="form-group">
-                                <label for="">Select User Type</label>
-                                <select name="user_type" id="" class="form-control">
-                                    <option value="">Select Type</option>
-                                    <option value="staff">Staff</option>
-                                    <option value="customer">Customer</option>
-                                    <option value="agent">Agent</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <div class="col-md-2">
-                        <input type="submit" value="Create User" class="btn btn-primary">
-                    </div>
-                </form>
+@section('content')
+    <div class="row mt-4">
+
+
+
+        <div class="col-lg-6 mb-5">
+
+
+
             </div>
         </div>
     </div>
-        <div class="row">
-            <div class="col-md-12 shadow-sm">
-                <table id="myTable" class="table table-striped mb-0">
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Role</th>
-                            <th>Location</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($users as $item)
-                        <tr>
-                            <td>{{$item->first_name}}</td>
-                            <td>{{$item->last_name}}</td>
-                            <td>{{$item->email}}</td>
-                            <td>{{$item->phone}}</td>
-                            <td>{{$item->role->name}}</td>
-                            <td>{{$item->location->name ?? "No Location Found"}}</td>
-                           
-                            <td>
-                                <form action="/userDelete/{{$item->id}}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <a href="/user_edit/{{$item->id}}" class="btn btn-info"><i class="fa-light fa-pen-to-square"></i></a>
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger"><i class="fa-light fa-trash-can"></i></button>
-                                </form>
-                            </td>
-                        </tr>
-                        @empty
-                            <tr colspan="20" class="text-center">No Users Found</tr>
-                        @endforelse
-                        
-                        
-                    </tbody>
-                </table>
+
+    <div class="col-lg-6 mb-lg-0 mb-4">
+        <div class="col-6 w-100">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                    {{ session()->get('message') }}
+                </div>
+            @endif
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="card mb-6">
+            <div class="card-header pb-0">
+                <h6>Users</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center justify-content-center mb-0">
+                        <thead>
+                            <tr>
+
+                                <th>First Name</th>
+                                <th>Middle Name</th>
+                                <th>Last Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Date</th>
+                                <th>Action</th>
+
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+
+                            @forelse ($users as $item)
+                                <tr>
+                                    <td>{{ $item->f_name }}</td>
+                                    <td>{{ $item->m_name }}</td>
+                                    <td>{{ $item->l_name}}</td>
+                                    <td>{{ $item->email}}</td>
+                                    <td>{{ $item->phone }}</td>
+
+                                    @if($item->is_kyc_verified  == "1")
+                                      <td><span class="badge rounded-pill bg-warning ">Verified</span></td>
+                                      @else
+                                      <td><span class="badge rounded-pill bg-success">Not Verified</span></td>
+                                      @endif
+                                    <td>{{ date('F d, Y', strtotime($item->created_at)) }}</td>
+                                    <td>
+                                     <div class="col-2 offset-2">
+                                        <form action="/card-info/?id={{$item->id}}" method="post">
+                                         @csrf
+                                         @method('get')
+                                         <button type="submit" class="btn btn-block btn-success">Edit</button>
+                                         </form>
+                                        </div>
+                                    </td>
+
+
+                                    <td>
+                                        <div class="col-0 offset-0">
+                                           <form action="/delete-user/?id={{$item->id}}" method="post">
+                                            @csrf
+                                            @method('GET')
+                                            <button type="submit" class="btn btn-block btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            @empty
+                                <tr colspan="20" class="text-center">No Record Found</tr>
+                            @endforelse
+
+
+                        </tbody>
+
+
+
+                    </table>
+                    {!! $users->appends(Request::all())->links() !!}
+
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+
+
+
+
+
 @endsection

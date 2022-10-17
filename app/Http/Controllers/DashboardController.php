@@ -97,6 +97,30 @@ class DashboardController extends Controller
         $usd_balance = $get_balance / 100 ;
 
 
+        //get issuing NGN balance
+        $headers = [
+            'Content-Type' => 'application/json',
+            'mono-sec-key' => "$mono_key",
+        ];
+        $client = new GuzzleClient([
+            'headers' => $headers
+        ]);
+        $body = '{
+
+        }';
+        $response = $client->request('GET', 'https://api.withmono.com/issuing/v1/wallets?currency=ngn', [
+            'body' => $body
+        ]);
+
+        $body = $response->getBody();
+        $result = json_decode($body);
+
+        $get_balance = $result->data->balance;
+
+        $ngn_balance = $get_balance / 100;
+
+
+
         $transactions = Transaction::orderBy('id', 'DESC')
         ->paginate(10);
 
@@ -104,8 +128,13 @@ class DashboardController extends Controller
 
 
 
-        return view('admin-dashboard', compact('users', 'get_creation_fee','transactions_count', 'transactions','usd_balance','active_usd_cards', 'total_money_out', 'cardy_rate', 'creation_fee', 'total_users', 'total_money_in', 'rate'));
+        return view('admin-dashboard', compact('users', 'get_creation_fee','ngn_balance','transactions_count', 'transactions','usd_balance','active_usd_cards', 'total_money_out', 'cardy_rate', 'creation_fee', 'total_users', 'total_money_in', 'rate'));
     }
+
+
+
+
+    
 
 
 
