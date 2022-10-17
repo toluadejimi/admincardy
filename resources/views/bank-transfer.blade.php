@@ -55,7 +55,7 @@
                             @forelse ($bank_transfers as $item)
                                 <tr>
                                     <td>{{ $item->ref_id }}</td>
-                                    <td>{{ $item->user->f_name }}</td>
+                                    <td>{{ $item->user->f_name  }}  {{  $item->user->l_name }}</td>
                                     <td>{{ $item->amount }}</td>
                                     <td>{{ $item->type }}</td>
 
