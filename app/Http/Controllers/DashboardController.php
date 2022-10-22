@@ -33,7 +33,7 @@ class DashboardController extends Controller
             ->orWhere('transaction_type', 'Withdrawl')
             ->sum('debit');
 
-        $total_money_in = Transaction::where('transaction_type', 'Cash in')
+        $total_money_in = Transaction::where('transaction_type', 'cash_in')
             ->sum('debit');
 
         $total_users = User::where('type', '2')
@@ -134,7 +134,7 @@ class DashboardController extends Controller
 
 
 
-    
+
 
 
 
