@@ -30,7 +30,7 @@
     <div class="col-12">
         <div class="card mb-6">
             <div class="card-header pb-0">
-                <h6>Cards</h6>
+                <h6>Bank Transfer Request</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
                 <div class="table-responsive p-0">
@@ -56,7 +56,7 @@
                                 <tr>
                                     <td>{{ $item->ref_id }}</td>
                                     <td>{{ $item->user->f_name  }}  {{  $item->user->l_name }}</td>
-                                    <td>{{ $item->amount }}</td>
+                                    <td>{{ number_formart($item->amount), 2 }}</td>
                                     <td>{{ $item->type }}</td>
 
                                     @if ($item->status == '0')
