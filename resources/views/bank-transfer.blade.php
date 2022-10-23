@@ -56,7 +56,7 @@
                                 <tr>
                                     <td>{{ $item->ref_id }}</td>
                                     <td>{{ $item->user->f_name  }}  {{  $item->user->l_name }}</td>
-                                    <td>{{ number_formart($item->amount), 2 }}</td>
+                                    <td>{{ $item->amount }}</td>
                                     <td>{{ $item->type }}</td>
 
                                     @if ($item->status == '0')
