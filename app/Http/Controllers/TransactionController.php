@@ -168,6 +168,9 @@ class TransactionController extends Controller
         $update = BankTransfer::where('id',$id)
         ->update(['status' => '1']);
 
+        $trx_id = BankTransfer::where('id',$id)
+        ->first()->ref_id;
+
         $user_id = BankTransfer::where('id',$id)
         ->first()->user_id;
 
@@ -209,7 +212,13 @@ class TransactionController extends Controller
                 $body = $res->getBody();
                 $array_body = json_decode($body);
 
-
+                $transaction = new Transaction();
+                $transaction->ref_trans_id = $trx_id;
+                $transaction->user_id = $user_id;
+                $transaction->transaction_type = "cash_in";
+                $transaction->debit = $amount;
+                $transaction->note = "Funding of Wallet";
+                $transaction->save();
 
 
         return back()->with('message', 'Transaction Sucessfully Updated');
