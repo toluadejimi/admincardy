@@ -280,25 +280,25 @@ class TransactionController extends Controller
     }
 
 
-    public function bank_transfer_request(){
+    public function all_transactions(){
 
 
-        $transactions = BankTransfer::orderBy('id', 'DESC')
-        ->paginate(10);
+        $transactions = Transaction::orderBy('id', 'DESC')
+        ->paginate(15);
 
 
-        return view('bank-transfer-request',compact('transactions'));
+        return view('all-transactions',compact('transactions'));
 
 
     }
 
 
-    public function update_bank_transfer(Request $request){
+    public function delete_transaction(Request $request){
 
-        $trx_id = $request->query('id');
+        $id = $request->query('id');
 
-        $transactions = BankTransfer::where('id', $trx_id)
-        ->update(['status'=> 1 ]);
+        $update = Transaction::where('id',$id)
+        ->delete();
 
 
         return back()->with('message', 'Transaction Updated Successfully');
