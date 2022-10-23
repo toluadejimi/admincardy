@@ -146,7 +146,7 @@ class TransactionController extends Controller
     public function bank_transfer_view(){
 
 
-        $bank_transfers = BankTransfer::orderBy('id', 'ASC')
+        $bank_transfers = BankTransfer::orderBy('id', 'DESC')
         ->paginate(10);
 
 
