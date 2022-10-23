@@ -52,13 +52,11 @@
                     <table class="table align-items-center justify-content-center mb-0">
                         <thead>
                             <tr>
-
                                 <th>Name</th>
                                 <th>Amount</th>
                                 <th>Status</th>
                                 <th>Date</th>
                                 <th>Action</th>
-
 
                             </tr>
                         </thead>
