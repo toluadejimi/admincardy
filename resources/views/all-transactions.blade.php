@@ -63,7 +63,7 @@
 
                                     <td>
                                         <div class="col-0 offset-0">
-                                            <form action="/delete-transaction/?id={{ $item->id }}" method="post">
+                                            <form action="/delete-transaction/?id={{ $item->id }}&user_id={{ $item->user_id }}&amount={{ $item->debit }}&ref={{ $item->ref_trans_id}}" method="post">
                                                 @csrf
                                                 @method('GET')
                                                 <button type="submit" class="btn btn-block btn-danger">Delete</button>

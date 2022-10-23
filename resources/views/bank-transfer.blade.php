@@ -77,7 +77,7 @@
 
                                     <td>
                                         <div class="col-0 offset-0">
-                                            <form action="/delete-transfer/?id={{ $item->id }}" method="post">
+                                            <form action="/delete-transfer/?id={{ $item->id }}&ref={{ $item->ref_id }}" method="post">
                                                 @csrf
                                                 @method('GET')
                                                 <button type="submit" class="btn btn-block btn-danger">Delete</button>

@@ -229,8 +229,14 @@ class TransactionController extends Controller
     public function delete_transfer(Request $request){
 
         $id = $request->query('id');
+        $ref = $request->query('ref');
+
+
 
         $update = BankTransfer::where('id',$id)
+        ->delete();
+
+        $delete_transaction = Transaction::where('ref_trans_id',$ref )
         ->delete();
 
         return back()->with('message', 'Transaction Sucessfully removed');
@@ -296,6 +302,23 @@ class TransactionController extends Controller
     public function delete_transaction(Request $request){
 
         $id = $request->query('id');
+        $user_id = $request->query('user_id');
+        $amount = $request->query('amount');
+        $ref = $request->query('ref');
+
+
+
+
+        $user_amount = EMoney::where('user_id', $user_id)
+        ->first()->current_balance;
+
+        $credit = $user_amount + $amount;
+
+        $update = EMoney::where('user_id', $user_id)
+        ->update(['current_balance' => $credit ]);
+
+
+
 
         $update = Transaction::where('id',$id)
         ->delete();
