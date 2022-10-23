@@ -216,7 +216,39 @@ class TransactionController extends Controller
 
 
 
+
+
     }
+
+
+    public function bank_transfer_request(){
+
+
+        $transactions = BankTransfer::orderBy('id', 'DESC')
+        ->paginate(10);
+
+
+        return view('bank-transfer-request',compact('transactions'));
+
+
+    }
+
+
+    public function update_bank_transfer(Request $request){
+
+        $trx_id = $request->query('id');
+
+        $transactions = BankTransfer::where('id', $trx_id)
+        ->update(['status'=> 1 ]);
+
+
+        return back()->with('message', 'Transaction Updated Successfully');
+
+
+    }
+
+
+
 
 
 

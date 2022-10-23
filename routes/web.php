@@ -84,6 +84,11 @@ Route::get('bank-transfer', [TransactionController::class,'bank_transfer_view'])
  Route::get('wallet-transaction', [TransactionController::class,'wallet_transactions']);
 
 
+ //bank-transfer-request
+Route::get('bank-transfer-request', [TransactionController::class,'bank_transfer_request']);
+Route::get('update-bank-transfer', [TransactionController::class,'update_bank_transfer']);
+
+
 
 
 
