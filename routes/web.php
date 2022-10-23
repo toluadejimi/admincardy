@@ -80,6 +80,12 @@ Route::get('bank-transfer', [TransactionController::class,'bank_transfer_view'])
  Route::get('delete-transfer', [TransactionController::class,'delete_transfer']);
 
 
+ //wallet transaction
+ Route::get('wallet-transaction', [TransactionController::class,'wallet_transactions']);
+
+
+
+
 
 
 

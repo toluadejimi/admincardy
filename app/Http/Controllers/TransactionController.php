@@ -180,6 +180,51 @@ class TransactionController extends Controller
 
 
 
+    public function wallet_transactions(){
+
+        $mono_key = env('MONO_KEY');
+
+
+            //get mono rate
+            $headers = [
+                'Content-Type' => 'application/json',
+                'mono-sec-key' => "$mono_key",
+            ];
+            $client = new GuzzleClient([
+                'headers' => $headers
+            ]);
+            $body = '{
+
+            }';
+            $response = $client->request('GET', 'https://api.withmono.com/issuing/v1/wallets/transactions', [
+                'body' => $body
+            ]);
+
+            $body = $response->getBody();
+            $result = json_decode($body);
+
+            $transactions = $result->data;
+
+
+
+
+            return view('wallet-transaction',compact('transactions'));
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
 
 
 

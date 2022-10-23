@@ -94,6 +94,8 @@ class DashboardController extends Controller
 
         $get_balance = $result->data->balance;
 
+     
+
         $usd_balance = $get_balance / 100 ;
 
 
