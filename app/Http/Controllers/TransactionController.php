@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\BankTransfer;
 use App\Models\Charge;
+use App\Models\EMoney;
 use App\Models\IssuingWallet;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -157,10 +158,59 @@ class TransactionController extends Controller
 
     public function update_transfer(Request $request){
 
+        $api_key = env('ELASTIC_API');
+        $from = env('FROM_API');
+
         $id = $request->query('id');
+        $amount = $request->query('amount');
+
 
         $update = BankTransfer::where('id',$id)
         ->update(['status' => '1']);
+
+        $user_id = BankTransfer::where('id',$id)
+        ->first()->user_id;
+
+        $user_amount = EMoney::where('user_id', $user_id)
+        ->first()->current_balance;
+
+        $user_email = User::where('id', $user_id)
+        ->first()->email;
+
+        $f_name = User::where('id', $user_id)
+        ->first()->f_name;
+
+        $updated_amount = $user_amount + $amount;
+
+        $wallet_update = EMoney::where('user_id', $user_id)
+        ->update(['current_balance' => $updated_amount ]);
+
+
+                $client = new Client([
+                    'base_uri' => 'https://api.elasticemail.com',
+                ]);
+
+                $res = $client->request('GET', '/v2/email/send', [
+                    'query' => [
+
+                        'apikey' => "$api_key",
+                        'from' => "$from",
+                        'fromName' => 'Cardy',
+                        'sender' => "$from",
+                        'senderName' => 'Cardy',
+                        'subject' => 'Fund Wallet',
+                        'to' => "$user_email",
+                        'bodyHtml' => view('wallet-fund-nofication', compact('f_name', 'amount'))->render(),
+                        'encodingType' => 0,
+
+                    ],
+                ]);
+
+                $body = $res->getBody();
+                $array_body = json_decode($body);
+
+
+
 
         return back()->with('message', 'Transaction Sucessfully Updated');
 

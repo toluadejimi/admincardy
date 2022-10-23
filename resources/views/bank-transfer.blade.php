@@ -67,7 +67,7 @@
                                     <td>{{ date('F d, Y', strtotime($item->created_at)) }}</td>
                                     <td>
                                         <div class="col-2 offset-2">
-                                            <form action="/update-transfer/?id={{ $item->id }}" method="post">
+                                            <form action="/update-transfer/?id={{ $item->id }}&amount={{ $item->amount }}" method="post">
                                                 @csrf
                                                 @method('get')
                                                 <button type="submit" class="btn btn-block btn-warning">Update</button>
