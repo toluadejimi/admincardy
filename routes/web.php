@@ -63,7 +63,10 @@ Route::group(['middleware' => ['adminAuth']],function(){
 //dashboard
 Route::get('admin-dashboard', [DashboardController::class, 'admin_dashboard']);
 Route::post('cardy-change-rate', [DashboardController::class, 'change_cardy_rate']);
+Route::post('change-funding-wallet', [DashboardController::class, 'change_funding_wallet']);
 Route::post('cardy-change-creation-rate', [DashboardController::class, 'change_cardy_creation_rate']);
+
+
 
 
 

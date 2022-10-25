@@ -344,6 +344,26 @@
                                 </div>
                             </div>
 
+                            <div class="timeline-block mb-5">
+                                <span class="timeline-step">
+                                    <i class="ni ni-bell-55 text-success text-gradient"></i>
+                                </span>
+                                <div class="timeline-content">
+                                    <form action="/change-funding-wallet" method="POST" role="form">
+                                        @csrf
+                                        <label>Set Card Funding Wallet</label>
+                                        <div class="mb-1">
+                                            <input type="text" class="form-control" placeholder="funding_wallet"  name="funding_wallet" value="{{$get_funding_wallet}}">
+                                        </div>
+
+                                        <div class="text-center mb-2">
+                                            <button type="submit" class="btn bg-gradient-primary w-100 mt-4 mb-0">Update Funding Wallet</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+
 
                         </div>
                     </div>

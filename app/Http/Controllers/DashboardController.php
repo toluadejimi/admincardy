@@ -61,6 +61,10 @@ class DashboardController extends Controller
         $rate = $result->data->rate;
 
 
+        $get_funding_wallet =  $cardy_rate = Charge::where('title', 'funding_wallet')
+        ->first()->amount;
+
+
 
         $cardy_rate = Charge::where('title', 'rate')
         ->first()->amount;
@@ -94,7 +98,7 @@ class DashboardController extends Controller
 
         $get_balance = $result->data->balance;
 
-     
+
 
         $usd_balance = $get_balance / 100 ;
 
@@ -130,7 +134,7 @@ class DashboardController extends Controller
 
 
 
-        return view('admin-dashboard', compact('users', 'get_creation_fee','ngn_balance','transactions_count', 'transactions','usd_balance','active_usd_cards', 'total_money_out', 'cardy_rate', 'creation_fee', 'total_users', 'total_money_in', 'rate'));
+        return view('admin-dashboard', compact('users','get_funding_wallet', 'get_creation_fee','ngn_balance','transactions_count', 'transactions','usd_balance','active_usd_cards', 'total_money_out', 'cardy_rate', 'creation_fee', 'total_users', 'total_money_in', 'rate'));
     }
 
 
@@ -164,6 +168,20 @@ class DashboardController extends Controller
         return back()->with('message', "Creation Fee has been successfully changed to $new_rate USD");
 
     }
+
+
+    public function change_funding_wallet(Request $request){
+
+        $wallet = $request->funding_wallet;
+
+        $update = Charge::where('title', 'funding_wallet')
+        ->update(['amount' =>  $wallet ]);
+
+        return back()->with('message', "Wallet has been successfully changed to $wallet");
+
+    }
+
+
 
 
     public function virtual_view(){
