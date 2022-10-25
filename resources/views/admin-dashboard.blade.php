@@ -27,7 +27,7 @@
 
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Money OUT</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Money out</p>
                                     <h5 class="font-weight-bolder mb-0">
                                         NGN {{ number_format($total_money_out), 2 }}
                                     </h5>
@@ -48,7 +48,7 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Money Out</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Money In</p>
                                     <h5 class="font-weight-bolder mb-0">
                                         NGN {{ number_format($total_money_in), 2 }}
                                     </h5>
