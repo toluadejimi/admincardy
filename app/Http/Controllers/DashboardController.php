@@ -30,7 +30,6 @@ class DashboardController extends Controller
         $users = User::all();
 
         $total_money_out = Transaction::where('transaction_type', 'cash_out')
-            ->orWhere('transaction_type', 'Withdrawl')
             ->sum('debit');
 
         $total_money_in = Transaction::where('transaction_type', 'cash_in')
