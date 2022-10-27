@@ -99,14 +99,11 @@ class User extends Authenticatable implements JWTSubject
     }
 
 
+
     public function emoney()
     {
-        return $this->belongsTo(EMoney::class);
+        return $this->hasMany(EMoney::class);
     }
 
 
-    public function user_wallet()
-    {
-        return $this->hasOne(EMoney::class,'user_id');
-    }
 }
