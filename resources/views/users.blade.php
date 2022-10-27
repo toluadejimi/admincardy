@@ -43,6 +43,7 @@
                         <thead>
                             <tr>
 
+                                <th>ID</th>
                                 <th>First Name</th>
                                 <th>Middle Name</th>
                                 <th>Last Name</th>
@@ -59,6 +60,7 @@
 
                             @forelse ($users as $item)
                                 <tr>
+                                    <td>{{ $item->id }}</td>
                                     <td>{{ $item->f_name }}</td>
                                     <td>{{ $item->m_name }}</td>
                                     <td>{{ $item->l_name}}</td>
