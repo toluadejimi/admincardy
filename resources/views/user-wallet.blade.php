@@ -55,10 +55,10 @@
 
                             @foreach ($wallet as $item)
                                 <tr>
-                                    <td>{{ $item->user_id }}</td>
+                                    <td>{{ $item->user_id->user->l_name }}</td>
                                     <td>{{ $item->current_balance }}</td>
 
-
+                                    <td>
                                      <div class="col-2 offset-2">
                                         <form action="/card-info/?id={{$item->id}}" method="post">
                                          @csrf
