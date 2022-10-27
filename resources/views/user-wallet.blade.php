@@ -55,7 +55,7 @@
 
                             @forelse ($wallet as $item)
                                 <tr>
-                                    <td>{{ $item->user_id->l_name }} {{ $item->user_id->f_name }}</td>
+                                    <td>{{ $item->user_id->user->l_name }} {{ $item->user_id->user->f_name }}</td>
                                     <td>{{ $item->current_balance }}</td>
 
 
