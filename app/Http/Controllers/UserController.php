@@ -30,7 +30,8 @@ class UserController extends Controller
     {
 
 
-       $wallet = EMoney::all();
+       $wallet = EMoney::orderBy('id', 'DESC')
+       ->paginate(10);
 
 
         return view('user-wallet',compact('wallet'));
