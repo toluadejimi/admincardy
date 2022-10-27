@@ -53,7 +53,7 @@
 
                         <tbody>
 
-                            @forelse ($wallet as $item)
+                            @foreach ($wallet as $item)
                                 <tr>
                                     <td>{{ $item->user_id->user->l_name }} {{ $item->user_id->user->f_name }}</td>
                                     <td>{{ $item->current_balance }}</td>
@@ -69,9 +69,8 @@
                                     </td>
 
                                 </tr>
-                            @empty
-                                <tr colspan="20" class="text-center">No Record Found</tr>
-                            @endforelse
+                        
+                            @endforeach
 
 
                         </tbody>
