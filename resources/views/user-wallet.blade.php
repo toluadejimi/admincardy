@@ -55,7 +55,7 @@
 
                             @foreach ($wallet as $item)
                                 <tr>
-                                    <td>{{ $item->user_id->user->l_name }}</td>
+                                    <td>{{ $item->user_id }}</td>
                                     <td>{{ $item->current_balance }}</td>
 
                                     <td>
