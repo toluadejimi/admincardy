@@ -92,9 +92,14 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasOne(DropOff::class,'user_id');
     }
-    
+
     public function collect()
     {
         return $this->hasOne(Collection::class,'user_id');
+    }
+
+    public function user_wallet()
+    {
+        return $this->hasOne(EMoney::class,'user_id');
     }
 }
