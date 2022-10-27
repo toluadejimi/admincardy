@@ -20,7 +20,7 @@ class UserController extends Controller
         ->paginate(10);
 
 
-        return view('users',compact('users','user_wallet'));
+        return view('users',compact('users'));
 
 
     }
