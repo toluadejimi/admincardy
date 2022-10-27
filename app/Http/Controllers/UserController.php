@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\EMoney;
 use App\Models\User;
 use GuzzleHttp\Client as GuzzleClient;
 use Illuminate\Http\Request;
@@ -19,8 +20,20 @@ class UserController extends Controller
         ->paginate(10);
 
 
+        return view('users',compact('users','user_wallet'));
 
-        return view('users',compact('users'));
+
+    }
+
+
+    public function user_wallet(Request $request)
+    {
+
+
+       $wallet = EMoney::all();
+
+
+        return view('user-wallet',compact('wallet'));
 
 
     }

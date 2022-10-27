@@ -33,7 +33,7 @@ Admin  </title>
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100 h-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link  active" href="{{ url('') }}/admin-dashboard">
+          <a class="nav-link " href="{{ url('') }}/admin-dashboard">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 45 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>shop </title>
@@ -53,7 +53,7 @@ Admin  </title>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="{{ url('') }}/users">
+          <a class="nav-link" href="{{ url('') }}/users">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -95,7 +95,8 @@ Admin  </title>
           </li>
 
 
-          <li class="nav-item">
+
+        <li class="nav-item">
             <a class="nav-link " href="{{ url('') }}/usd-card">
               <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                 <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -115,6 +116,9 @@ Admin  </title>
               <span class="nav-link-text ms-1">All Cards</span>
             </a>
           </li>
+
+
+
 
 
         <li class="nav-item">
@@ -181,6 +185,7 @@ Admin  </title>
               <span class="nav-link-text ms-1">Wallet Transactions</span>
             </a>
           </li>
+
 
 
 

@@ -73,6 +73,8 @@ Route::post('cardy-change-creation-rate', [DashboardController::class, 'change_c
 //usrs
 Route::get('users', [UserController::class,'user_view']);
 Route::get('delete-user', [UserController::class,'delete_user']);
+Route::get('user-wallet', [UserController::class,'user_wallet']);
+
 
 
 

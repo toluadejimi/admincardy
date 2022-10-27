@@ -309,17 +309,6 @@ class TransactionController extends Controller
 
 
 
-        $user_amount = EMoney::where('user_id', $user_id)
-        ->first()->current_balance;
-
-        $credit = $user_amount + $amount;
-
-        $update = EMoney::where('user_id', $user_id)
-        ->update(['current_balance' => $credit ]);
-
-
-
-
         $update = Transaction::where('id',$id)
         ->delete();
 
@@ -328,6 +317,10 @@ class TransactionController extends Controller
 
 
     }
+
+
+
+    
 
 
 
