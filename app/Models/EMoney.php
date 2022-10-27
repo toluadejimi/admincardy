@@ -14,12 +14,15 @@ class EMoney extends Model
         'current_balance',
         'charged_earned'
     ];
-    
-    
+
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+
+
 
 
 
