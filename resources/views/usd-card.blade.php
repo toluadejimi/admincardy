@@ -39,7 +39,7 @@
 
                                     <div class="mb-3 col-md-6">
                                         <label for="amount" class="form-label">Amount</label>
-                                        <input class="form-control" type="number" name="amount" id=""
+                                        <input class="form-control" type="text" name="amount" id=""
                                             value="" />
                                     </div>
 
