@@ -319,8 +319,129 @@ class TransactionController extends Controller
     }
 
 
+    public function liquidate_card(Request $request){
 
-    
+        $api_key = env('ELASTIC_API');
+        $from = env('FROM_API');
+
+        $card_id = $request->card_id;
+        $amount = $request->amount;
+        $destination = $request->destination;
+
+        $amount_in_cent = $amount * 100;
+
+        $databody = array(
+            "destination" => $destination,
+            "amount" => $amount_in_cent
+        );
+
+        $mono_api_key = env('MONO_KEY');
+        $body = json_encode($databody);
+
+        $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, "https://api.withmono.com/issuing/v1/cards/$card_id/liquidate");
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_ENCODING, '');
+            curl_setopt($curl, CURLOPT_MAXREDIRS, 10);
+            curl_setopt($curl, CURLOPT_TIMEOUT, 0);
+            curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
+            curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+            curl_setopt($curl, CURLOPT_POSTFIELDS, $body);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt(
+                $curl,
+                CURLOPT_HTTPHEADER,
+                array(
+                    'Content-Type: application/json',
+                    'Accept: application/json',
+                    "mono-sec-key: $mono_api_key",
+                )
+            );
+            // $final_results = curl_exec($curl);
+
+            $var = curl_exec($curl);
+            curl_close($curl);
+
+
+            $var = json_decode($var);
+
+            if($var->status !== 'processing')
+            {
+
+                return back()->with('error', 'Somthing is wring with the api');
+
+            }
+
+
+
+            $trx_id = $var->data->transaction_id;
+
+            $get_user_id = Vcard::where('card_id', $card_id)
+            ->first()->user_id;
+
+            $user_email = User::where('user_id', $get_user_id)
+            ->first()->email;
+
+            $f_name = User::where('user_id', $get_user_id)
+            ->first()->f_name;
+
+
+
+
+            $client = new Client([
+                'base_uri' => 'https://api.elasticemail.com',
+            ]);
+
+            $res = $client->request('GET', '/v2/email/send', [
+                'query' => [
+
+                    'apikey' => "$api_key",
+                    'from' => "$from",
+                    'fromName' => 'Cardy',
+                    'sender' => "$from",
+                    'senderName' => 'Cardy',
+                    'subject' => 'Card Maintaince Fee',
+                    'to' => "$user_email",
+                    'bodyHtml' => view('card-maintaince-fee-nofication', compact('f_name', 'amount'))->render(),
+                    'encodingType' => 0,
+
+                ],
+            ]);
+
+            $body = $res->getBody();
+            $array_body = json_decode($body);
+
+
+
+            $transaction = new Transaction();
+            $transaction->ref_trans_id = $trx_id;
+            $transaction->user_id = $get_user_id;
+            $transaction->transaction_type = "card_fee";
+            $transaction->debit = $amount;
+            $transaction->note = "Monthly Card Maintaince Fee";
+            $transaction->save();
+
+
+            return back()->with('message', 'Card Liqudated Successfully');
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
 
 
 

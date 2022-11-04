@@ -27,19 +27,33 @@
                 <div class="card-body p-3 mb-3">
                     <div class="row">
                         <div class="col-lg-12 mb-3">
-                            <form id="" action="/card-info" method="POST" onsubmit="return true">
+                            <form id="" action="/liquidate-card" method="POST" onsubmit="return true">
                                 @csrf
                                 <div class="row">
 
                                     <div class="mb-3 col-md-6">
                                         <label for="amount" class="form-label">Enter Card ID</label>
-                                        <input class="form-control" type="number" name="card_id" id="card_id"
+                                        <input class="form-control" type="text" name="card_id" id="card_id"
                                             value="" />
+                                    </div>
+
+                                    <div class="mb-3 col-md-6">
+                                        <label for="amount" class="form-label">Amount</label>
+                                        <input class="form-control" type="number" name="amount" id=""
+                                            value="" />
+                                    </div>
+
+                                    <div class="mb-3 col-md-6">
+                                        <label for="destination" class="form-label">Currency</label>
+                                        <select class="form-control" name="destination" required>
+                                        <option value="usd">USD</option>
+                                        <option value="ngn">NGN</option>
+                                        </select>
                                     </div>
 
 
                                     <div class="text-center col-md-4 mt-1 mb-3">
-                                        <button type="submit" class="btn bg-gradient-primary w-100 mt-4 mb-0">Find Card</button>
+                                        <button type="submit" class="btn bg-gradient-primary w-100 mt-4 mb-0">Liquidate Card</button>
                                     </div>
 
 
