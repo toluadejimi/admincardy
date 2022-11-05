@@ -149,9 +149,15 @@ class TransactionController extends Controller
         $bank_transfers = BankTransfer::orderBy('id', 'DESC')
         ->paginate(10);
 
+        $bank = BankTransfer::where('type', 'Bank Transfer')
+        ->sum('amount');
+
+        $instant = BankTransfer::where('type', 'Instant Funding')
+        ->sum('amount');
 
 
-        return view('bank-transfer',compact('bank_transfers'));
+
+        return view('bank-transfer',compact('bank_transfers', 'instant', 'bank'));
 
     }
 
