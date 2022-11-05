@@ -321,6 +321,8 @@ class TransactionController extends Controller
 
     public function liquidate_card(Request $request){
 
+
+
         $api_key = env('ELASTIC_API');
         $from = env('FROM_API');
 
@@ -329,6 +331,8 @@ class TransactionController extends Controller
         $destination = $request->destination;
 
         $amount_in_cent = $amount * 100;
+
+
 
         $databody = array(
             "destination" => $destination,
@@ -346,7 +350,7 @@ class TransactionController extends Controller
             curl_setopt($curl, CURLOPT_TIMEOUT, 0);
             curl_setopt($curl, CURLOPT_FOLLOWLOCATION, true);
             curl_setopt($curl, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
-            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
+            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PATCH');
             curl_setopt($curl, CURLOPT_POSTFIELDS, $body);
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt(
@@ -366,11 +370,14 @@ class TransactionController extends Controller
 
             $var = json_decode($var);
 
-            if($var->status !== 'processing')
-            {
+            $message = $var->message;
 
-                return back()->with('error', 'Somthing is wring with the api');
 
+
+
+            if($var->status == 'failed'){
+
+                return back()->with('message', "$message");
             }
 
 
