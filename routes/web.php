@@ -70,6 +70,16 @@ Route::post('cardy-change-creation-rate', [DashboardController::class, 'change_c
 
 
 
+
+//vAS
+Route::get('vas', [DashboardController::class, 'vas_view']);
+
+
+
+
+
+
+
 //usrs
 Route::get('users', [UserController::class,'user_view']);
 Route::get('delete-user', [UserController::class,'delete_user']);
