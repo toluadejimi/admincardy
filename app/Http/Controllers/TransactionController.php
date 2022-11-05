@@ -387,10 +387,10 @@ class TransactionController extends Controller
             $get_user_id = Vcard::where('card_id', $card_id)
             ->first()->user_id;
 
-            $user_email = User::where('user_id', $get_user_id)
+            $user_email = User::where('id', $get_user_id)
             ->first()->email;
 
-            $f_name = User::where('user_id', $get_user_id)
+            $f_name = User::where('id', $get_user_id)
             ->first()->f_name;
 
 
