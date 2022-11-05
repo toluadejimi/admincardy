@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        
+
 
 
     </div>
@@ -101,7 +101,7 @@
                         </tbody>
 
 
-                        {!! $bank_transfers->appends(Request::all())->links() !!}
+                        {!! $vas->appends(Request::all())->links() !!}
 
 
 
