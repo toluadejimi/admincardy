@@ -267,6 +267,8 @@
                                       <td><span class="badge rounded-pill bg-warning ">Debit</span></td>
                                       @elseif($item->transaction_type == "cash_out")
                                       <td><span class="badge rounded-pill bg-warning">Debit</span></td>
+                                      @elseif($item->transaction_type == "card_fee")
+                                      <td><span class="badge rounded-pill bg-warning">Debit</span></td>
                                       @elseif($item->transaction_type == "Withdrawl")
                                       <td><span class="badge rounded-pill bg-warning">Debit</span></td>
                                       @else
