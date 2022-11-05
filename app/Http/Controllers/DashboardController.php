@@ -228,8 +228,11 @@ class DashboardController extends Controller
         $total_vas = Transaction::where('type', 'vas')
         ->sum('debit');
 
+        $vas = Transaction::where('type', 'vas')
+        ->get();
 
-        return view('vas',compact('total_vas'));
+
+        return view('vas',compact('total_vas', 'vas'));
 
 
 
