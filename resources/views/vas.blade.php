@@ -86,10 +86,10 @@
 
                             @forelse ($vas as $item)
                                 <tr>
-                                    <td>{{ $item->ref_id }}</td>
+                                    <td>{{ $item->ref_trans_id }}</td>
                                     <td>{{ $item->user->f_name  }}  {{  $item->user->l_name }}</td>
-                                    <td>{{ $item->amount }}</td>
-                                    <td>{{ $item->type }}</td>
+                                    <td>{{ $item->debit }}</td>
+                                    <td>{{ $item->note }}</td>
                                     <td>{{ date('F d, Y', strtotime($item->created_at)) }}</td>
 
                                 </tr>
