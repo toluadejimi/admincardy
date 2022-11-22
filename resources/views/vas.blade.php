@@ -97,8 +97,15 @@
                                 <tr colspan="20" class="text-center">No Record Found</tr>
                             @endforelse
 
-
                         </tbody>
+
+                        <tfoot>
+                            <tr>
+                              <h5><th id="total" colspan="2">Total :</th></h5>
+                             <td> <h5>NGN {{$total}}</h5></td>
+                            </tr>
+                        </tfoot>
+
 
 
                         {!! $vas->appends(Request::all())->links() !!}
