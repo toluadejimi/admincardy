@@ -29,12 +29,13 @@ class UserController extends Controller
     public function user_wallet(Request $request)
     {
 
+        $user = User::all();
 
        $wallet = EMoney::orderBy('id', 'DESC')
        ->paginate(10);
 
 
-        return view('user-wallet',compact('wallet'));
+        return view('user-wallet',compact('wallet', 'user'));
 
 
     }

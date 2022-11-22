@@ -230,7 +230,7 @@ class DashboardController extends Controller
 
         $vas = Transaction::orderBy('created_at', 'DESC')
         ->where('type', 'vas')
-        ->paginate(15);
+        ->paginate(100);
 
         $total = Transaction::orderBy('created_at', 'DESC')
         ->where('type', 'vas')
