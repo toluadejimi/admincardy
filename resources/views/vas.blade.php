@@ -102,7 +102,7 @@
                         <tfoot>
                             <tr>
                               <h5><th id="total" colspan="2">Total :</th></h5>
-                             <td> <h5>NGN {{$total}}</h5></td>
+                             <td> <h5>NGN {{number_format($total)}}</h5></td>
                             </tr>
                         </tfoot>
 
