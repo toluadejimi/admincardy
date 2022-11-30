@@ -39,7 +39,7 @@
                 <div class="card mt-4">
                     <div class="card-header pb-0 p-3">
                         <div class="row">
-                           
+
                             <div class="col-3">
                                 <a class="btn bg-gradient-dark mb-0" href="/usd-downtime">USD CARD DOWNTIME</a>
                             </div>
@@ -49,7 +49,7 @@
                             </div>
 
                             <div class="col-3">
-                                <a class="btn bg-gradient-dark mb-0" href="javascript:;">Add New Card</a>
+                                <a class="btn bg-gradient-warning mb-0" href="/uverified-account">UNVERIFIED ACCOUNT</a>
                             </div>
 
                             <div class="col-3">

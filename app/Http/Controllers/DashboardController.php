@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Mail\UnverifiedAccount;
 use App\Models\Charge;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -293,6 +294,28 @@ class DashboardController extends Controller
                     ];
 
                     Mail::to($value->email)->send(new UsdCardActive($details));
+                }
+            }
+        }
+
+        return back()->with('message',"Email Sent Successfully");
+
+    }
+
+
+    public function unverified_account(Request $request){
+
+
+        $users = User::where('is_kyc_verified', 0)->get();
+
+        if ($users->count() > 0) {
+            foreach($users as $key => $value){
+                if (!empty($value->email)) {
+                    $details = [
+                      'subject' => 'Cardy Account Verification',
+                    ];
+
+                    Mail::to($value->email)->send(new UnverifiedAccount($details));
                 }
             }
         }
