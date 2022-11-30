@@ -87,22 +87,22 @@
 	</style>
 </head>
 <body style="margin: 0; background-color: #091548; padding: 0; -webkit-text-size-adjust: none; text-size-adjust: none;">
-<table border="0" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #091548;" width="100%">
+<table border="0" cellpadding="0" cellspacing="0" class="nl-container" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #091548; background-image: url('images/3f9ac71a-0478-49e8-8e1e-0995e5e92369.png'); background-position: top left; background-size: cover; background-repeat: no-repeat;" width="100%">
 <tbody>
 <tr>
 <td>
-<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #091548; background-image: {{url('')}}('/public/images/background_2.png'); background-position: center top; background-repeat: repeat;" width="100%">
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #091548; background-image: url('https://dashboard.cardy4u.com/public/images/background_2.png'); background-position: center top; background-repeat: repeat;" width="100%">
 <tbody>
 <tr>
 <td>
-<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; width: 600px;" width="600">
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; background-color: #000000; width: 600px;" width="600">
 <tbody>
 <tr>
-<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 10px; padding-right: 10px; vertical-align: top; padding-top: 5px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
+<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 10px; padding-right: 10px; vertical-align: top; padding-top: 5px; padding-bottom: 15px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
 <table border="0" cellpadding="0" cellspacing="0" class="image_block block-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
 <tr>
 <td class="pad" style="width:100%;padding-right:0px;padding-left:0px;padding-top:8px;">
-<div align="center" class="alignment" style="line-height:10px"><img alt="Main Image" src="https://dashboard.cardy4u.com/public/upload/usddowntime.png" style="display: block; height: auto; border: 0; width: 232px; max-width: 100%;" title="Main Image" width="232"/></div>
+<div align="center" class="alignment" style="line-height:10px"><img alt="Main Image" src="https://dashboard.cardy4u.com/public/upload/usddowntime.png" style="display: block; height: auto; border: 0; width: 261px; max-width: 100%;" title="Main Image" width="261"/></div>
 </td>
 </tr>
 </table>
@@ -119,7 +119,7 @@
 </table>
 <table border="0" cellpadding="0" cellspacing="0" class="text_block block-4" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; word-break: break-word;" width="100%">
 <tr>
-<td class="pad" style="padding-bottom:20px;padding-left:30px;padding-right:20px;padding-top:5px;">
+<td class="pad" style="padding-bottom:35px;padding-left:30px;padding-right:25px;padding-top:5px;">
 <div style="font-family: sans-serif">
 <div class="" style="font-size: 14px; mso-line-height-alt: 21px; color: #ffffff; line-height: 1.5; font-family: Varela Round, Trebuchet MS, Helvetica, sans-serif;">
 <p style="margin: 0; font-size: 14px; text-align: center; mso-line-height-alt: 18px;"><span style="font-size:12px;">We’re currently experiencing downtime with our Issuing USD service provider. This means that you won't  be able to create, fund cards, and might also have issues checking the balance of existing cards.</span></p>
@@ -139,8 +139,6 @@
 </td>
 </tr>
 </table>
-<div class="spacer_block mobile_hide" style="height:60px;line-height:60px;font-size:1px;"> </div>
-<div class="spacer_block" style="height:15px;line-height:15px;font-size:1px;"> </div>
 </td>
 </tr>
 </tbody>
@@ -149,18 +147,18 @@
 </tr>
 </tbody>
 </table>
-<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-2" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #000000;" width="100%">
 <tbody>
 <tr>
 <td>
-<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; color: #000000; border-radius: 5px 0 0; width: 600px;" width="600">
+<table align="center" border="0" cellpadding="0" cellspacing="0" class="row-content stack" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; background-color: #000000; border-radius: 5px 0 0; color: #000000; border-top: 0 solid #000207; border-right: 0px solid #000207; border-left: 0 solid #000207; border-bottom: 0 solid #000207; width: 600px;" width="600">
 <tbody>
 <tr>
-<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; padding-left: 10px; padding-right: 10px; vertical-align: top; padding-top: 15px; padding-bottom: 15px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
+<td class="column column-1" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-weight: 400; text-align: left; background-color: #000000; padding-left: 10px; padding-right: 10px; vertical-align: top; padding-top: 15px; padding-bottom: 15px; border-top: 0px; border-right: 0px; border-bottom: 0px; border-left: 0px;" width="100%">
 <table border="0" cellpadding="0" cellspacing="0" class="image_block block-1" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
 <tr>
 <td class="pad" style="padding-bottom:5px;padding-left:5px;padding-right:5px;padding-top:25px;width:100%;">
-<div align="center" class="alignment" style="line-height:10px"><img alt="Your Logo" src="https://dashboard.cardy4u.com/public/upload/logowhite.png" style="display: block; height: auto; border: 0; width: 145px; max-width: 100%;" title="Your Logo" width="145"/></div>
+<div align="center" class="alignment" style="line-height:10px"><img alt="Your Logo" src="https://dashboard.cardy4u.com/public/upload/logodark.png" style="display: block; height: auto; border: 0; width: 145px; max-width: 100%;" title="Your Logo" width="145"/></div>
 </td>
 </tr>
 </table>
@@ -183,9 +181,9 @@
 <div align="center" class="alignment">
 <table border="0" cellpadding="0" cellspacing="0" class="social-table" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt; display: inline-block;" width="156px">
 <tr>
-<td style="padding:0 10px 0 10px;"><a href="https://www.facebook.com/cardy4u" target="_blank"><img alt="Facebook" height="32"  src="https://dashboard.cardy4u.com/public/images/facebook2x.png" style="display: block; height: auto; border: 0;" title="Facebook" width="32"/></a></td>
-<td style="padding:0 10px 0 10px;"><a href="https://instagram.com/cardy4u" target="_blank"><img alt="Instagram" height="32" src="https://dashboard.cardy4u.com/public/images/instagram2x.png" style="display: block; height: auto; border: 0;" title="Instagram" width="32"/></a></td>
-<td style="padding:0 10px 0 10px;"><a href="https://twitter.com/cardy4u" target="_blank"><img alt="Twitter" height="32" src="https://dashboard.cardy4u.com/public/images/twitter2x.png" style="display: block; height: auto; border: 0;" title="Twitter" width="32"/></a></td>
+	<td style="padding:0 10px 0 10px;"><a href="https://www.facebook.com/cardy4u" target="_blank"><img alt="Facebook" height="32"  src="https://dashboard.cardy4u.com/public/images/facebook2x.png" style="display: block; height: auto; border: 0;" title="Facebook" width="32"/></a></td>
+	<td style="padding:0 10px 0 10px;"><a href="https://instagram.com/cardy4u" target="_blank"><img alt="Instagram" height="32" src="https://dashboard.cardy4u.com/public/images/instagram2x.png" style="display: block; height: auto; border: 0;" title="Instagram" width="32"/></a></td>
+	<td style="padding:0 10px 0 10px;"><a href="https://twitter.com/cardy4u" target="_blank"><img alt="Twitter" height="32" src="https://dashboard.cardy4u.com/public/images/twitter2x.png" style="display: block; height: auto; border: 0;" title="Twitter" width="32"/></a></td>
 </tr>
 </table>
 </div>
@@ -218,6 +216,9 @@
 </tr>
 </tbody>
 </table>
+
+
+
 <table align="center" border="0" cellpadding="0" cellspacing="0" class="row row-3" role="presentation" style="mso-table-lspace: 0pt; mso-table-rspace: 0pt;" width="100%">
 <tbody>
 <tr>
