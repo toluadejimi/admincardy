@@ -13,9 +13,11 @@ use App\Models\User;
 use App\Models\Transaction;
 use App\Models\Vcard;
 use GuzzleHttp\Client;
+use App\Mail\UsdCardDowntime;
 use GuzzleHttp\Client as GuzzleClient;
 use Illuminate\View\ViewName;
 use DB;
+use Mail;
 
 
 class DashboardController extends Controller
@@ -242,6 +244,37 @@ class DashboardController extends Controller
 
 
 
+
+    }
+
+    public function usd_downtime_email(Request $request){
+
+        $users = User::select('*')
+        ->orderBy('id','DESC')
+        ->paginate(10);
+
+
+        return view('usd-downtime', compact('users'));
+    }
+
+    public function usd_downtime(Request $request){
+
+
+        $users = User::all();
+
+        if ($users->count() > 0) {
+            foreach($users as $key => $value){
+                if (!empty($value->email)) {
+                    $details = [
+                      'subject' => 'Cardy',
+                    ];
+
+                    Mail::to($value->email)->send(new UsdCardDowntime($details));
+                }
+            }
+        }
+
+        return back()->with('message',"Email Sent Successfully");
 
     }
 

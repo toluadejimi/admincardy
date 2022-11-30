@@ -11,17 +11,17 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CardController;
 
 use App\Http\Controllers\UserController;
-
-
-
-
-
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
     return view('login');
 
 });
 
+
+
+Route::get('usd-downtime-mail', [DashboardController::class,'usd_downtime_email']);
+Route::get('usd-downtime', [DashboardController::class, 'usd_downtime'])->name('send.mail');
 
 
 
