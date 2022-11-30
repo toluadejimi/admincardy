@@ -40,7 +40,7 @@
                     <div class="card-header pb-0 p-3">
                         <div class="row">
 
-                            <div class="col-3">
+                            <div class="col-3 mb-4">
                                 <a class="btn bg-gradient-dark mb-0" href="/usd-downtime">USD CARD DOWNTIME</a>
                             </div>
 
@@ -53,7 +53,7 @@
                             </div>
 
                             <div class="col-3">
-                                <a class="btn bg-gradient-dark mb-0" href="javascript:;">Add New Card</a>
+                                <a class="btn bg-gradient-danger mb-0" href="/rate">Daily Rate</a>
                             </div>
 
 

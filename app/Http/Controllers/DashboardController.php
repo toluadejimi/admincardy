@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Mail\Rate;
 use App\Mail\UnverifiedAccount;
 use App\Models\Charge;
 use App\Providers\RouteServiceProvider;
@@ -316,6 +317,31 @@ class DashboardController extends Controller
                     ];
 
                     Mail::to($value->email)->send(new UnverifiedAccount($details));
+                }
+            }
+        }
+
+        return back()->with('message',"Email Sent Successfully");
+
+    }
+
+
+    public function rate(Request $request){
+
+        $rates = Charge::where('title', 'rate' )
+        ->first()->amount;
+
+        $users = User::all();
+
+        if ($users->count() > 0) {
+            foreach($users as $key => $value){
+                if (!empty($value->email)) {
+                    $details = [
+                      'subject' => 'Cardy Daily Rate',
+                      'rate' => $rates,
+                    ];
+
+                    Mail::to($value->email)->send(new Rate($details));
                 }
             }
         }

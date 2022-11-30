@@ -24,6 +24,8 @@ Route::get('usd-downtime-mail', [DashboardController::class,'usd_downtime_email'
 Route::get('usd-downtime', [DashboardController::class, 'usd_downtime'])->name('send.mail');
 Route::get('usd-card-active', [DashboardController::class, 'usd_card_active']);
 Route::get('uverified-account', [DashboardController::class, 'unverified_account']);
+Route::get('rate', [DashboardController::class, 'rate']);
+
 
 
 
