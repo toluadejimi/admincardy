@@ -45,7 +45,7 @@
                             </div>
 
                             <div class="col-3">
-                                <a class="btn bg-gradient-dark mb-0" href="javascript:;">Add New Card</a>
+                                <a class="btn bg-gradient-success mb-0" href="/usd-card-active">USD CARD ACTIVE</a>
                             </div>
 
                             <div class="col-3">

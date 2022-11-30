@@ -14,6 +14,7 @@ use App\Models\Transaction;
 use App\Models\Vcard;
 use GuzzleHttp\Client;
 use App\Mail\UsdCardDowntime;
+use App\Mail\UsdCardActive;
 use GuzzleHttp\Client as GuzzleClient;
 use Illuminate\View\ViewName;
 use DB;
@@ -266,10 +267,32 @@ class DashboardController extends Controller
             foreach($users as $key => $value){
                 if (!empty($value->email)) {
                     $details = [
-                      'subject' => 'Cardy',
+                      'subject' => 'Cardy USD Card Downtime',
                     ];
 
                     Mail::to($value->email)->send(new UsdCardDowntime($details));
+                }
+            }
+        }
+
+        return back()->with('message',"Email Sent Successfully");
+
+    }
+
+
+    public function usd_card_active(Request $request){
+
+
+        $users = User::all();
+
+        if ($users->count() > 0) {
+            foreach($users as $key => $value){
+                if (!empty($value->email)) {
+                    $details = [
+                      'subject' => 'USD CARD ACTIVE',
+                    ];
+
+                    Mail::to($value->email)->send(new UsdCardActive($details));
                 }
             }
         }
