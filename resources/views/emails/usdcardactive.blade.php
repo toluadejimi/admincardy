@@ -164,7 +164,7 @@
                                                             </td>
                                                         </tr>
                                                     </table>
-                                                  
+
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -198,7 +198,7 @@
                                                                 style="padding-bottom:5px;padding-left:5px;padding-right:5px;padding-top:25px;width:100%;">
                                                                 <div align="center" class="alignment"
                                                                     style="line-height:10px"><img alt="Your Logo"
-                                                                        src="https://dashboard.cardy4u.com/public/upload/logodark.png"
+                                                                        src="https://dashboard.cardy4u.com/public/upload/logodarkxmas.png"
                                                                         style="display: block; height: auto; border: 0; width: 145px; max-width: 100%;"
                                                                         title="Your Logo" width="145" /></div>
                                                             </td>
@@ -298,7 +298,7 @@
                                                                             <span style="">Copyright ©
                                                                                 Cardy</span></p>
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                             </td>
                                                         </tr>
