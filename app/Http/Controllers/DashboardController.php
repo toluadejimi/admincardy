@@ -16,6 +16,7 @@ use App\Models\Transaction;
 use App\Models\Vcard;
 use GuzzleHttp\Client;
 use App\Mail\UsdCardDowntime;
+use App\Mail\XmasAds;
 use App\Mail\UsdCardActive;
 use GuzzleHttp\Client as GuzzleClient;
 use Illuminate\View\ViewName;
@@ -349,6 +350,30 @@ class DashboardController extends Controller
         return back()->with('message',"Email Sent Successfully");
 
     }
+
+
+    public function xmasads(Request $request){
+
+
+        $users = User::all();
+
+        if ($users->count() > 0) {
+            foreach($users as $key => $value){
+                if (!empty($value->email)) {
+                    $details = [
+                      'subject' => 'December Online Shopping',
+                    ];
+
+                    Mail::to($value->email)->send(new XmasAds($details));
+                }
+            }
+        }
+
+        return back()->with('message',"Email Sent Successfully");
+
+    }
+
+
 
 
 

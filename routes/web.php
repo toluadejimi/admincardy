@@ -25,6 +25,8 @@ Route::get('usd-downtime', [DashboardController::class, 'usd_downtime'])->name('
 Route::get('usd-card-active', [DashboardController::class, 'usd_card_active']);
 Route::get('uverified-account', [DashboardController::class, 'unverified_account']);
 Route::get('rate', [DashboardController::class, 'rate']);
+Route::get('xmas', [DashboardController::class, 'xmasads']);
+
 
 
 

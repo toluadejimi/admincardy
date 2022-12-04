@@ -65,6 +65,36 @@
                 </div>
             </div>
 
+            <div class="col-md-12 mb-lg-0 mb-4">
+                <div class="card mt-4">
+                    <div class="card-header pb-0 p-3">
+                        <div class="row">
+
+                            <div class="col-3 mb-4">
+                                <a class="btn bg-gradient-dark mb-0" href="/xmas">DECEMBER SHOPPING EMAIL</a>
+                            </div>
+
+                            {{-- <div class="col-3">
+                                <a class="btn bg-gradient-success mb-0" href="/usd-card-active">USD CARD ACTIVE</a>
+                            </div>
+
+                            <div class="col-3">
+                                <a class="btn bg-gradient-warning mb-0" href="/uverified-account">UNVERIFIED ACCOUNT</a>
+                            </div>
+
+                            <div class="col-3">
+                                <a class="btn bg-gradient-danger mb-0" href="/rate">Daily Rate</a>
+                            </div> --}}
+
+
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
 
 
 
