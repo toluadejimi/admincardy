@@ -18,6 +18,7 @@ Admin  </title>
   <link href="{{ url('') }}/public/assets/css/nucleo-svg.css" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ url('') }}/public/assets/css/soft-ui-dashboard.css?v=1.0.3" rel="stylesheet" />
+  <!-- CSS only -->
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">

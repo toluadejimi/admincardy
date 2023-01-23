@@ -13,6 +13,11 @@ class CardController extends Controller
     public function vcard_view(Request $request)
     {
 
+        $page = $request->page;
+
+
+
+
         $mono_key = env('MONO_KEY');
         $users = User::all();
 
@@ -28,7 +33,7 @@ class CardController extends Controller
         $body = '{
         }';
 
-        $response = $client->request('GET', 'https://api.withmono.com/issuing/v1/cards', [
+        $response = $client->request('GET', "https://api.withmono.com/issuing/v1/cards?page=$page", [
             'body' => $body,
         ]);
 
@@ -36,6 +41,7 @@ class CardController extends Controller
         $result = json_decode($body);
 
         $usd_card = $result->data;
+
 
         return view('usd-card', compact('usd_card'));
 
@@ -68,6 +74,7 @@ class CardController extends Controller
         $result = json_decode($body);
 
         $usd_card = $result->data;
+
 
 
 

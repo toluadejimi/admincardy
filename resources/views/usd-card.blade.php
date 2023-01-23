@@ -191,6 +191,22 @@
 
 
                     </table>
+
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                          <li class="page-item"><a class="page-link" href="/usd-card?page=1">1</a></li>
+                          <li class="page-item"><a class="page-link" href="/usd-card?page=2">2</a></li>
+                          <li class="page-item"><a class="page-link" href="/usd-card?page=3">3</a></li>
+                          <li class="page-item"><a class="page-link" href="/usd-card?page=4">4</a></li>
+                          <li class="page-item"><a class="page-link" href="/usd-card?page=5">5</a></li>
+                          <li class="page-item"><a class="page-link" href="/usd-card?page=6">6</a></li>
+                          <li class="page-item"><a class="page-link" href="/usd-card?page=7">7</a></li>
+                          <li class="page-item"><a class="page-link" href="/usd-card?page=8">8</a></li>
+                          <li class="page-item"><a class="page-link" href="/usd-card?page=9">9</a></li>
+                          <li class="page-item"><a class="page-link" href="/usd-card?page=10">10</a></li>
+                        </ul>
+                    </nav>
+
                 </div>
             </div>
         </div>
