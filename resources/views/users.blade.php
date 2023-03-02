@@ -75,9 +75,9 @@
                                     <td>{{ date('F d, Y', strtotime($item->created_at)) }}</td>
                                     <td>
                                      <div class="col-2 offset-2">
-                                        <form action="/card-info/?id={{$item->id}}" method="post">
+                                        <form action="/edit-user/?id={{$item->id}}" method="post">
                                          @csrf
-                                         @method('get')
+                                         @method('GET')
                                          <button type="submit" class="btn btn-block btn-success">Edit</button>
                                          </form>
                                         </div>

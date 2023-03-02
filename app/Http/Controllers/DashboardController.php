@@ -31,7 +31,7 @@ class DashboardController extends Controller
     public function admin_dashboard()
     {
 
-        $mono_key = env('MONO_KEY');
+        $api_key = env('API_KEY');
 
         $users = User::all();
 
@@ -45,25 +45,92 @@ class DashboardController extends Controller
             ->count();
 
 
-        //get mono rate
-        $headers = [
+            // Mprate 
+
+            $headers = [
+            'Accept' => 'application/json',
             'Content-Type' => 'application/json',
-            'mono-sec-key' => "$mono_key",
-        ];
-        $client = new GuzzleClient([
-            'headers' => $headers
-        ]);
-        $body = '{
+            'Authorization' => "Bearer $api_key",
+            ];
+            $client = new GuzzleClient([
+                'headers' => $headers,
+            ]);
+            $body = '{
+    
+                }';
+            $response = $client->request('POST', 'https://api.maplerad.com/v1/fx/quote', [
+                'body' => json_encode([
+                    'source_currency' => 'USD',
+                    'target_currency' => 'NGN',
+                    'amount' =>  10000
+                ])
+            ]);
 
-        }';
-        $response = $client->request('GET', 'https://api.withmono.com/issuing/v1/misc/rates/usd', [
-            'body' => $body
-        ]);
+            {
+   
+}
+    
+            $body = $response->getBody();
+            $response = json_decode($body);
 
-        $body = $response->getBody();
-        $result = json_decode($body);
 
-        $rate = $result->data->rate;
+            $mp_rate = $response->data->rate;
+
+
+
+        //get issuing ngn balance
+
+        $headers = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+            'Authorization' => "Bearer $api_key",
+            ];
+            $client = new GuzzleClient([
+                'headers' => $headers,
+            ]);
+            $body = '{
+    
+                }';
+            $response = $client->request('GET', 'https://api.maplerad.com/v1/wallets/NGN', [
+                'body' => $body
+            ]);
+
+    
+            $body = $response->getBody();
+            $response = json_decode($body);
+
+
+            $amount = $response->data->available_balance;
+
+            $ngn_amount = $amount / 10000;
+
+
+          //get issuing usd balance
+
+          $headers = [
+            'Accept' => 'application/json',
+            'Content-Type' => 'application/json',
+            'Authorization' => "Bearer $api_key",
+            ];
+            $client = new GuzzleClient([
+                'headers' => $headers,
+            ]);
+            $body = '{
+    
+                }';
+            $response = $client->request('GET', 'https://api.maplerad.com/v1/wallets/USD', [
+                'body' => $body
+            ]);
+
+    
+            $body = $response->getBody();
+            $response = json_decode($body);
+
+
+
+            $amount = $response->data->available_balance;
+
+            $usd_amount = $amount / 10000;
 
 
         $get_funding_wallet =  $cardy_rate = Charge::where('title', 'funding_wallet')
@@ -83,52 +150,10 @@ class DashboardController extends Controller
         $active_usd_cards = Vcard::where('card_type', 'usd')
         ->count();
 
-        //get issuing usd balance
-        $headers = [
-            'Content-Type' => 'application/json',
-            'mono-sec-key' => "$mono_key",
-        ];
-        $client = new GuzzleClient([
-            'headers' => $headers
-        ]);
-        $body = '{
-
-        }';
-        $response = $client->request('GET', 'https://api.withmono.com/issuing/v1/wallets?currency=usd', [
-            'body' => $body
-        ]);
-
-        $body = $response->getBody();
-        $result = json_decode($body);
-
-        $get_balance = $result->data->balance;
+       
 
 
-
-        $usd_balance = $get_balance / 100 ;
-
-
-        //get issuing NGN balance
-        $headers = [
-            'Content-Type' => 'application/json',
-            'mono-sec-key' => "$mono_key",
-        ];
-        $client = new GuzzleClient([
-            'headers' => $headers
-        ]);
-        $body = '{
-
-        }';
-        $response = $client->request('GET', 'https://api.withmono.com/issuing/v1/wallets?currency=ngn', [
-            'body' => $body
-        ]);
-
-        $body = $response->getBody();
-        $result = json_decode($body);
-
-        $get_balance = $result->data->balance;
-
-        $ngn_balance = $get_balance / 100;
+       
 
 
 
@@ -139,7 +164,7 @@ class DashboardController extends Controller
 
 
 
-        return view('admin-dashboard', compact('users','get_funding_wallet', 'get_creation_fee','ngn_balance','transactions_count', 'transactions','usd_balance','active_usd_cards', 'total_money_out', 'cardy_rate', 'creation_fee', 'total_users', 'total_money_in', 'rate'));
+        return view('admin-dashboard', compact('users','get_funding_wallet', 'usd_amount', 'ngn_amount', 'mp_rate','get_creation_fee','transactions_count', 'transactions','active_usd_cards', 'total_money_out', 'cardy_rate', 'creation_fee', 'total_users', 'total_money_in'));
     }
 
 

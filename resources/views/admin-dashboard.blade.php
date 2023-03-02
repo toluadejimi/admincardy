@@ -90,9 +90,9 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">Mono Rate</p>
+                                    <p class="text-sm mb-0 text-capitalize font-weight-bold">MP Rate</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        NGN {{ $rate }}
+                                        NGN {{number_format($mp_rate)}}
                                     </h5>
                                 </div>
                             </div>
@@ -161,7 +161,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Issuing NGN Balance</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        NGN {{ number_format($ngn_balance), 2 }}
+                                        NGN {{number_format($ngn_amount)}}
                                     </h5>
                                 </div>
                             </div>
@@ -182,7 +182,7 @@
                                 <div class="numbers">
                                     <p class="text-sm mb-0 text-capitalize font-weight-bold">Issuing USD Balance</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        USD {{ number_format($usd_balance), 2 }}
+                                        USD {{number_format($usd_amount)}}
                                     </h5>
                                 </div>
                             </div>

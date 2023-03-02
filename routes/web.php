@@ -54,6 +54,16 @@ Route::get('welcome', [AuthController::class,'login_view']);
 
 
 
+ Route::get('edit-user', [UserController::class,'get_user']);
+
+ Route::post('customer-register', [AuthController::class,'customer_register']);
+
+ Route::get('suspend-customer', [AuthController::class,'suspend_customer']);
+ Route::get('unsuspend-customer', [AuthController::class,'unsuspend_customer']);
+
+
+
+
 
 
 
